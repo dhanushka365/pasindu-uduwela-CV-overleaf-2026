@@ -85,6 +85,14 @@ strokes, sans-serif fonts are sans (without) these strokes.
 % Ensure that .pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
+% ATS Optimization: Add metadata for better parsing
+\hypersetup{
+    pdfauthor={Pasindu Uduwela},
+    pdftitle={Pasindu Uduwela - Software Engineer CV},
+    pdfsubject={Software Engineer Resume},
+    pdfkeywords={Software Engineer, Full Stack Developer, Computer Engineering, Python, Java, C\#, React, Angular, .NET Core, FastAPI, Docker, Kubernetes, AWS, Google Cloud}
+}
+
 % Color definitions
 \definecolor{linkcolour}{RGB}{0,102,204}
 
@@ -127,6 +135,7 @@ strokes, sans-serif fonts are sans (without) these strokes.
 % Technology card command - creates clickable rounded boxes (ATS-friendly)
 % Usage: \techcard[optional-url]{Technology Name}
 % Text content is ATS-readable as it's actual text, not images
+% ATS Optimization: Add invisible text after card for better parsing
 \newcommand{\techcard}[2][]{%
   \tikz[baseline=(text.base)]{%
     \node[draw=black!60, fill=black!5, rounded corners=4pt, inner sep=5pt, outer sep=10pt, anchor=base, font=\small] (text) {%
@@ -138,6 +147,8 @@ strokes, sans-serif fonts are sans (without) these strokes.
     };%
   }%
   \hspace{4pt}%
+  % ATS: Add invisible text for better keyword extraction
+  \textcolor{white}{\fontsize{1pt}{1pt}\selectfont #2}%
 }
 
 % Technology list wrapper for proper alignment and wrapping (ATS-friendly)
